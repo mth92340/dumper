@@ -1,5 +1,5 @@
 ================================================================================
-                           ZS DUMPER — CONTROL CENTER
+                           ZS DUMPER
 ================================================================================
 
 VERSION : 2.0
@@ -28,8 +28,8 @@ PRÉREQUIS :
 ✓ Decrypt : Décryptage des fichiers chiffrés
 ✓ Fixer : Réparation des fichiers corrompus
 ✓ Détection automatique : Récupération IP et token depuis FiveM
-✓ Interface Electron : Design moderne inspiré de l'app Electron
-✓ Palette violet/vert : Couleurs professionnelles et modernes
+✓ Interface épurée : Design moderne et minimaliste
+✓ Palette violet/vert : Couleurs professionnelles
 ✓ Mise à jour API : Système de mise à jour automatique
 ✓ Installation complète : Assistant d'installation intégré
 ✓ Pas de CMD : Lancement en mode fenêtré sans console
@@ -38,16 +38,15 @@ PRÉREQUIS :
                                 DESIGN
 ================================================================================
 
-INTERFACE STYLE ELECTRON :
+INTERFACE ÉPURÉE :
 - Palette très sombre (#08080b) - Fond ultra noir
-- Sidebar professionnelle (#0b0b0f) avec navigation
+- Sidebar simple (#0b0b0f) avec navigation minimale
 - Violet principal (#9b72ff) - Accents et branding
 - Vert accent (#57e39b) - Success et highlights
-- Lignes subtilles (#292934) - Séparateurs
-- Typographie Manrope moderne et professionnelle
-- Cartes stylisées avec effets visuels
-- Avatars circulaires avec branding
-- Status chips pour l'état des cibles
+- Typographie Manrope moderne
+- Cartes compactes et simples
+- Petits boutons élégants
+- Interface clean et professionnelle
 
 PALETTE DE COULEURS :
 - Noir ultra (#08080b) - Fond principal
@@ -62,16 +61,15 @@ PALETTE DE COULEURS :
 ================================================================================
 
 DUMPER :
-1. Cliquez sur "Add target" pour ajouter une nouvelle cible
+1. Cliquez sur "+" pour ajouter une nouvelle cible
 2. Entrez le nom du serveur et l'IP / lien cfx.re
 3. Utilisez la détection automatique pour FiveM
 4. Cliquez sur "Dump" pour lancer la récupération
 
-OVERVIEW :
-- Section héros avec informations sur l'API
-- Statistiques en temps réel
-- Gestion des cibles avec cartes modernes
-- Recherche et filtrage des serveurs
+NAVIGATION :
+- Dumper : Page principale de récupération
+- Decrypt : Décryptage des fichiers
+- Fixer : Réparation des fichiers
 
 MISE À JOUR :
 - Connecté à l'API locale (port 3011)
@@ -135,7 +133,7 @@ SOLUTION : Vérifiez votre connexion internet. L'API doit être accessible.
 Empaquetage : PyInstaller avec mode fenêtré (no-console)
 Dependencies : psutil, requests, pycryptodome, tkinter
 Python : Non requis pour l'utilisateur (inclus dans l'exécutable)
-Design : Interface style Electron avec palette violet/vert moderne
+Design : Interface épurée avec palette violet/vert moderne
 
 ================================================================================
                                 SUPPORT
@@ -149,7 +147,7 @@ Pour le support technique ou les questions :
                                 LICENCE
 ================================================================================
 
-ZS Dumper — Control Center
+ZS Dumper — Professional Edition
 Usage personnel et éducatif uniquement.
 Respectez les conditions d'utilisation des serveurs FiveM.
 

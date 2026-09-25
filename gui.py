@@ -173,41 +173,15 @@ class ZSDumperApp(tk.Tk):
         sidebar.pack(side="left", fill="y")
         sidebar.pack_propagate(False)
         
-        # Header style Electron
+        # Header simple
         header_frame = tk.Frame(sidebar, bg=self.colors['sidebar'])
-        header_frame.pack(fill="x", pady=22, padx=14)
+        header_frame.pack(fill="x", pady=20, padx=20)
         
-        # Brand
-        brand_frame = tk.Frame(header_frame, bg=self.colors['sidebar'])
-        brand_frame.pack(fill="x", pady=(0, 20))
-        
-        # Logo mark
-        brand_mark = tk.Frame(brand_frame, bg="#1b1034", 
-                              width=34, height=34)
-        brand_mark.pack(side="left", padx=(0, 10))
-        brand_mark.pack_propagate(False)
-        
-        logo_canvas = tk.Canvas(brand_mark, width=28, height=28, 
-                               bg="#1b1034", highlightthickness=0)
-        logo_canvas.pack(pady=3)
-        self.draw_electron_logo(logo_canvas, 14, 14, 12)
-        
-        # Brand text
-        brand_text = tk.Frame(brand_frame, bg=self.colors['sidebar'])
-        brand_text.pack(side="left")
-        
-        tk.Label(brand_text, text="ZS DUMPER", 
+        tk.Label(header_frame, text="ZS Dumper", 
                 bg=self.colors['sidebar'], fg=self.colors['text'],
-                font=("Manrope", 13, "bold")).pack(anchor="w")
-        tk.Label(brand_text, text="CONTROL CENTER", 
-                bg=self.colors['sidebar'], fg="#767686",
-                font=("Manrope", 10)).pack(anchor="w", pady=(3, 0))
+                font=("Manrope", 16, "bold")).pack()
         
-        # Separator
-        separator = tk.Frame(header_frame, bg=self.colors['line'], height=1)
-        separator.pack(fill="x", pady=(0, 20))
-        
-        # Navigation style Electron
+        # Navigation simple
         self.nav_buttons = {}
         
         nav_items = [
@@ -221,60 +195,21 @@ class ZSDumperApp(tk.Tk):
         nav_frame = tk.Frame(sidebar, bg=self.colors['sidebar'])
         nav_frame.pack(fill="x", padx=0)
         
-        # Eyebrow label
-        tk.Label(nav_frame, text="NAVIGATION",
-                bg=self.colors['sidebar'], fg="#737385",
-                font=("Manrope", 10, "bold")).pack(anchor="w", pady=(0, 10))
+
         
-        for text, icon, command in nav_items:
-            btn = SidebarItem(nav_frame, text, icon, command, 
-                            active=(text == "Dumper"))
-            btn.pack(fill="x", pady=3)
-            self.nav_buttons[text] = btn
+        for text, command in nav_items:
+            active = (text == "Dumper")
+            bg = "#1b1725" if active else "transparent"
+            fg = self.colors['text'] if active else "#8d8d9c"
             
-        # Spacer
-        tk.Frame(sidebar, bg=self.colors['sidebar']).pack(fill="x", expand=True)
-        
-        # Bottom section style Electron
-        bottom_frame = tk.Frame(sidebar, bg=self.colors['sidebar'])
-        bottom_frame.pack(fill="x", expand=True, pady=20, padx=0)
-        
-        # Activity button
-        activity_btn = tk.Button(bottom_frame, text="  Activity", 
-                                 bg="#0b0b0f", fg="#8d8d9c",
-                                 relief="flat", cursor="hand2",
-                                 font=("Manrope", 11), 
-                                 anchor="w", padx=12, pady=11)
-        activity_btn.pack(fill="x", pady=(0, 3))
-        
-        # Settings button
-        settings_btn = tk.Button(bottom_frame, text="  Settings", 
-                                 bg="#0b0b0f", fg="#8d8d9c",
-                                 relief="flat", cursor="hand2",
-                                 font=("Manrope", 11), 
-                                 anchor="w", padx=12, pady=11)
-        settings_btn.pack(fill="x", pady=(0, 20))
-        
-        # Profile section
-        profile_frame = tk.Frame(bottom_frame, bg=self.colors['sidebar'])
-        profile_frame.pack(fill="x", padx=14)
-        
-        # Avatar
-        avatar_canvas = tk.Canvas(profile_frame, width=36, height=36, 
-                                  bg=self.colors['sidebar'], highlightthickness=0)
-        avatar_canvas.pack(side="left", padx=(0, 12))
-        avatar_canvas.create_oval(3, 3, 33, 33, fill="#9b72ff", outline="")
-        avatar_canvas.create_text(18, 18, text="M", fill="white",
-                                  font=("Manrope", 14, "bold"))
-        
-        # User info
-        user_info = tk.Frame(profile_frame, bg=self.colors['sidebar'])
-        user_info.pack(side="left", fill="x", expand=True)
-        
-        tk.Label(user_info, text="mathe", bg=self.colors['sidebar'], 
-                fg=self.colors['text'], font=("Manrope", 12, "bold")).pack(anchor="w")
-        tk.Label(user_info, text="Pro account", bg=self.colors['sidebar'], 
-                fg="#767686", font=("Manrope", 10)).pack(anchor="w", pady=(3, 0))
+            btn = tk.Button(nav_frame, text=text, command=command,
+                           bg=bg, fg=fg,
+                           relief="flat", cursor="hand2",
+                           font=("Manrope", 11, "bold" if active else "normal"),
+                           anchor="w", padx=12, pady=10)
+            btn.pack(fill="x", pady=2)
+            self.nav_buttons[text] = btn
+
         
     def draw_electron_logo(self, canvas, x, y, size):
         """Logo style Electron - ZS avec violet"""
@@ -290,161 +225,53 @@ class ZSDumperApp(tk.Tk):
         self.clear_content()
         self.set_active_nav("Dumper")
         
-        # Topbar style Electron
-        topbar = tk.Frame(self.content_area, bg=self.colors['bg'])
-        topbar.pack(fill="x", pady=20, padx=30)
-        
-        # Breadcrumbs
-        breadcrumbs = tk.Frame(topbar, bg=self.colors['bg'])
-        breadcrumbs.pack(side="left")
-        
-        tk.Label(breadcrumbs, text="Command", bg=self.colors['bg'], fg="#767686",
-                font=("Manrope", 11)).pack(side="left")
-        tk.Label(breadcrumbs, text="/", bg=self.colors['bg'], fg="#767686",
-                font=("Manrope", 11)).pack(side="left", padx=5)
-        tk.Label(breadcrumbs, text="Dumper", bg=self.colors['bg'], fg=self.colors['text'],
-                font=("Manrope", 11, "bold")).pack(side="left", padx=5)
-        
-        # Live pill
-        live_pill = tk.Frame(topbar, bg="#1b1725")
-        live_pill.pack(side="right", padx=5)
-        tk.Label(live_pill, text="● Session active", bg="#1b1725", fg="#7df0b2",
-                font=("Manrope", 9, "bold")).pack(padx=8, pady=4)
-        
         # Content inner
         content_inner = tk.Frame(self.content_area, bg=self.colors['bg'])
-        content_inner.pack(fill="both", expand=True, padx=30, pady=10)
+        content_inner.pack(fill="both", expand=True, padx=30, pady=30)
         
-        # Hero section style Electron
-        hero = tk.Frame(content_inner, bg=self.colors['card'])
-        hero.pack(fill="x", pady=(0, 25), ipady=30)
-        
-        hero_inner = tk.Frame(hero, bg=self.colors['card'])
-        hero_inner.pack(fill="both", expand=True, padx=30, pady=25)
-        
-        # Hero text
-        hero_text = tk.Frame(hero_inner, bg=self.colors['card'])
-        hero_text.pack(side="left", fill="x", expand=True)
-        
-        tk.Label(hero_text, text="RESOURCE RECOVERY", bg=self.colors['card'], fg="#737385",
-                font=("Manrope", 10, "bold")).pack(anchor="w")
-        tk.Label(hero_text, text="Server dumper", bg=self.colors['card'], fg=self.colors['text'],
-                font=("Manrope", 36, "bold")).pack(anchor="w", pady=(10, 0))
-        tk.Label(hero_text, text="Connecte l'API locale ZS-DUMPER pour gérer tes serveurs et lancer les opérations depuis l'exécutable Windows.",
-                bg=self.colors['card'], fg=self.colors['muted'],
-                font=("Manrope", 12)).pack(anchor="w", pady=(8, 0))
-        
-        # API endpoint badge
-        api_badge = tk.Frame(hero_text, bg="#1b1725")
-        api_badge.pack(anchor="w", pady=(15, 0))
-        tk.Label(api_badge, text=" API locale · port 3011 ", bg="#1b1725", fg="#aaa8bb",
-                font=("Manrope", 9)).pack(padx=8, pady=4)
-        
-        # Stats section
-        stats_container = tk.Frame(content_inner, bg=self.colors['bg'])
-        stats_container.pack(fill="x", pady=(0, 25))
-        
-        # Stat cards
-        stat_card1 = tk.Frame(stats_container, bg=self.colors['card'], 
-                               highlightbackground="#9b72ff", highlightthickness=2)
-        stat_card1.pack(side="left", fill="x", expand=True, padx=(0, 15), ipady=15)
-        
-        stat_inner1 = tk.Frame(stat_card1, bg=self.colors['card'])
-        stat_inner1.pack(fill="both", expand=True, padx=20, pady=15)
-        
-        tk.Label(stat_inner1, text="Saved targets", bg=self.colors['card'], fg=self.colors['muted'],
-                font=("Manrope", 10)).pack(anchor="w")
-        tk.Label(stat_inner1, text="16", bg=self.colors['card'], fg=self.colors['text'],
-                font=("Manrope", 24, "bold")).pack(anchor="w", pady=(5, 0))
-        tk.Label(stat_inner1, text="+3 this week", bg=self.colors['card'], fg="#767686",
-                font=("Manrope", 9)).pack(anchor="w")
-        
-        # Section heading
+        # Section heading simple
         section_heading = tk.Frame(content_inner, bg=self.colors['bg'])
-        section_heading.pack(fill="x", pady=(0, 20))
+        section_heading.pack(fill="x", pady=(0, 25))
         
-        section_left = tk.Frame(section_heading, bg=self.colors['bg'])
-        section_left.pack(side="left")
+        tk.Label(section_heading, text="Cibles", bg=self.colors['bg'], fg=self.colors['text'],
+                font=("Manrope", 24, "bold")).pack(side="left")
         
-        tk.Label(section_left, text="Your targets", bg=self.colors['bg'], fg=self.colors['text'],
-                font=("Manrope", 20, "bold")).pack(side="left")
-        tk.Label(section_left, text="16 total", bg=self.colors['bg'], fg=self.colors['muted'],
-                font=("Manrope", 14)).pack(side="left", padx=15)
-        
-        tk.Label(section_left, text="Manage your connected servers and start a new dump.",
-                bg=self.colors['bg'], fg=self.colors['muted'],
-                font=("Manrope", 12)).pack(anchor="w", pady=(5, 0))
-        
-        # Add target button
-        add_btn = tk.Button(section_heading, text="  + Add target", 
+        # Add target button petit
+        add_btn = tk.Button(section_heading, text="+", 
                            command=self.show_add_target_modal,
                            bg="#9b72ff", fg="white",
                            relief="flat", cursor="hand2",
-                           font=("Manrope", 11, "bold"), padx=20, pady=12)
+                           font=("Manrope", 14, "bold"), width=3, height=1)
         add_btn.pack(side="right")
         
-        # Toolbar
-        toolbar = tk.Frame(content_inner, bg=self.colors['bg'])
-        toolbar.pack(fill="x", pady=(0, 20))
-        
-        # Search
-        search_frame = tk.Frame(toolbar, bg=self.colors['card'])
-        search_frame.pack(side="left", fill="x", expand=True, ipady=10)
-        
-        ModernEntry(search_frame, placeholder="Search targets...").pack(fill="x", padx=15, ipady=8)
-        
-        # New target card
-        target_card = tk.Frame(content_inner, bg=self.colors['card'], 
-                               highlightbackground="#9b72ff", highlightthickness=1)
-        target_card.pack(fill="x", pady=(0, 25), ipady=20)
+        # New target card compact
+        target_card = tk.Frame(content_inner, bg=self.colors['card'])
+        target_card.pack(fill="x", pady=(0, 20), ipady=15)
         
         target_inner = tk.Frame(target_card, bg=self.colors['card'])
-        target_inner.pack(fill="both", expand=True, padx=25, pady=20)
+        target_inner.pack(fill="both", expand=True, padx=20, pady=15)
         
-        tk.Label(target_inner, text="NOUVELLE CIBLE",
-                bg=self.colors['card'], fg=self.colors['text'],
-                font=("Manrope", 16, "bold")).pack(anchor="w", pady=(0, 20))
-        
-        # Input fields
+        # Input fields compacts
         input_container = tk.Frame(target_inner, bg=self.colors['card'])
         input_container.pack(fill="x")
         
         name_frame = tk.Frame(input_container, bg=self.colors['card'])
-        name_frame.pack(side="left", fill="x", expand=True, padx=(0, 15))
+        name_frame.pack(side="left", fill="x", expand=True, padx=(0, 10))
         
-        tk.Label(name_frame, text="NOM *", bg=self.colors['card'], fg=self.colors['muted'],
-                font=("Manrope", 10, "bold")).pack(anchor="w", pady=(0, 8))
-        
-        self.name_entry = ModernEntry(name_frame, placeholder="Nom du serveur")
-        self.name_entry.pack(fill="x", ipady=10)
+        self.name_entry = ModernEntry(name_frame, placeholder="Nom")
+        self.name_entry.pack(fill="x", ipady=8)
         
         ip_frame = tk.Frame(input_container, bg=self.colors['card'])
-        ip_frame.pack(side="left", fill="x", expand=True)
+        ip_frame.pack(side="left", fill="x", expand=True, padx=(0, 10))
         
-        tk.Label(ip_frame, text="IP / CFX", bg=self.colors['card'], fg=self.colors['muted'],
-                font=("Manrope", 10, "bold")).pack(anchor="w", pady=(0, 8))
+        self.ip_entry = ModernEntry(ip_frame, placeholder="IP / CFX")
+        self.ip_entry.pack(fill="x", ipady=8)
         
-        self.ip_entry = ModernEntry(ip_frame, placeholder="cfx.re/join/xxxxxx")
-        self.ip_entry.pack(fill="x", ipady=10)
-        
-        # Action buttons
-        button_container = tk.Frame(target_inner, bg=self.colors['card'])
-        button_container.pack(fill="x", pady=(20, 0))
-        
-        tk.Button(button_container, text="Résoudre l'IP", command=self.resolve_ip,
-                 bg="#1b1725", fg=self.colors['text'],
-                 relief="flat", cursor="hand2",
-                 font=("Manrope", 10, "bold"), width=15).pack(side="left", padx=(0, 10))
-        
-        tk.Button(button_container, text="Détection auto", command=self.auto_detect,
-                 bg="#1b1725", fg=self.colors['text'],
-                 relief="flat", cursor="hand2",
-                 font=("Manrope", 10, "bold"), width=15).pack(side="left", padx=(0, 10))
-        
-        tk.Button(button_container, text="Ajouter", command=self.add_target,
+        # Action buttons petits
+        tk.Button(input_container, text="Add", command=self.add_target,
                  bg="#9b72ff", fg="white",
                  relief="flat", cursor="hand2",
-                 font=("Manrope", 10, "bold"), width=12).pack(side="right")
+                 font=("Manrope", 10, "bold"), width=8).pack(side="right")
         
         # Targets list
         self.targets_list = tk.Frame(content_inner, bg=self.colors['bg'])
@@ -590,113 +417,69 @@ class ZSDumperApp(tk.Tk):
             self.create_target_item(target)
             
     def create_target_item(self, target):
-        # Carte style Electron
+        # Carte compacte
         item_card = tk.Frame(self.targets_list, bg=self.colors['card'])
-        item_card.pack(fill="x", pady=8, ipady=15)
+        item_card.pack(fill="x", pady=5, ipady=10)
         
         inner_container = tk.Frame(item_card, bg=self.colors['card'])
-        inner_container.pack(fill="both", expand=True, padx=20, pady=12)
+        inner_container.pack(fill="both", expand=True, padx=15, pady=10)
         
-        # Left section
-        left_section = tk.Frame(inner_container, bg=self.colors['card'])
-        left_section.pack(side="left", expand=True)
-        
-        # Avatar
-        avatar_canvas = tk.Canvas(left_section, width=36, height=36, 
-                                  bg=self.colors['card'], highlightthickness=0)
-        avatar_canvas.pack(side="left", padx=(0, 15))
-        avatar_canvas.create_oval(3, 3, 33, 33, fill="#9b72ff", outline="")
-        avatar_canvas.create_text(18, 18, text=target['initial'], fill="white",
-                                  font=("Manrope", 14, "bold"))
-        
-        # Info
-        info_section = tk.Frame(left_section, bg=self.colors['card'])
-        info_section.pack(side="left", fill="x", expand=True)
-        
-        tk.Label(info_section, text=target['name'], 
+        # Nom
+        tk.Label(inner_container, text=target['name'], 
                 bg=self.colors['card'], fg=self.colors['text'],
-                font=("Manrope", 14, "bold")).pack(anchor="w")
+                font=("Manrope", 12, "bold")).pack(side="left")
         
-        meta_frame = tk.Frame(info_section, bg=self.colors['card'])
-        meta_frame.pack(anchor="w", pady=(5, 0))
+        # IP
+        tk.Label(inner_container, text=target['ip'], 
+                bg=self.colors['card'], fg=self.colors['muted'],
+                font=("Manrope", 10)).pack(side="left", padx=15)
         
-        tk.Label(meta_frame, text=target['ip'], bg=self.colors['card'], fg=self.colors['muted'],
-                font=("Manrope", 10)).pack(side="left")
-        tk.Label(meta_frame, text="•", bg=self.colors['card'], fg=self.colors['muted'],
-                font=("Manrope", 10)).pack(side="left", padx=5)
-        tk.Label(meta_frame, text="12 min ago", bg=self.colors['card'], fg=self.colors['muted'],
-                font=("Manrope", 10)).pack(side="left")
-        
-        # Right section
-        right_section = tk.Frame(inner_container, bg=self.colors['card'])
-        right_section.pack(side="right")
-        
-        # Status
-        token_status = target.get('token', '-')
-        token_color = "#57e39b" if token_status == '✔' else self.colors['muted']
-        
-        status_label = tk.Label(right_section, text=f"  {token_status}  ",
-                                  bg="#1b1725", fg=token_color,
-                                  font=("Manrope", 9, "bold"))
-        status_label.pack(side="left", padx=(0, 12))
-        
-        # Dump button
-        dump_btn = tk.Button(right_section, text="  Dump", 
+        # Dump button petit
+        dump_btn = tk.Button(inner_container, text="Dump", 
                            command=lambda t=target: self.start_dump(t),
-                           bg="#1b1725", fg=self.colors['text'],
+                           bg="#9b72ff", fg="white",
                            relief="flat", cursor="hand2",
-                           font=("Manrope", 10, "bold"), width=10)
-        dump_btn.pack(side="left", padx=(0, 12))
-        
-        # Menu button
-        menu_btn = tk.Button(right_section, text="⋮",
-                           bg="#0b0b0f", fg="#8d8d9c",
-                           relief="flat", cursor="hand2",
-                           font=("Manrope", 15, "bold"), width=2)
-        menu_btn.pack(side="left")
+                           font=("Manrope", 9, "bold"), width=6)
+        dump_btn.pack(side="right")
         
     def show_add_target_modal(self):
-        """Modal pour ajouter une cible"""
+        """Modal simple pour ajouter une cible"""
         self.modal_window = tk.Toplevel(self)
         self.modal_window.title("Add Target")
-        self.modal_window.geometry("500x400")
+        self.modal_window.geometry("400x300")
         self.modal_window.configure(bg=self.colors['bg'])
         self.modal_window.resizable(False, False)
         self.modal_window.transient(self)
         self.modal_window.grab_set()
         
         self.modal_window.update_idletasks()
-        x = (self.modal_window.winfo_screenwidth() // 2) - (500 // 2)
-        y = (self.modal_window.winfo_screenheight() // 2) - (400 // 2)
+        x = (self.modal_window.winfo_screenwidth() // 2) - (400 // 2)
+        y = (self.modal_window.winfo_screenheight() // 2) - (300 // 2)
         self.modal_window.geometry(f"+{x}+{y}")
         
         # Modal content
         modal_inner = tk.Frame(self.modal_window, bg=self.colors['card'])
-        modal_inner.pack(fill="both", expand=True, padx=30, pady=30)
+        modal_inner.pack(fill="both", expand=True, padx=25, pady=25)
         
-        tk.Label(modal_inner, text="NEW CONNECTION",
-                bg=self.colors['card'], fg="#737385",
-                font=("Manrope", 10, "bold")).pack(anchor="w", pady=(0, 15))
-        
-        tk.Label(modal_inner, text="Add a target",
+        tk.Label(modal_inner, text="Add target",
                 bg=self.colors['card'], fg=self.colors['text'],
-                font=("Manrope", 24, "bold")).pack(anchor="w", pady=(0, 30))
+                font=("Manrope", 18, "bold")).pack(anchor="w", pady=(0, 20))
         
         # Name input
-        tk.Label(modal_inner, text="Target name", bg=self.colors['card'], fg=self.colors['muted'],
-                font=("Manrope", 10, "bold")).pack(anchor="w")
-        ModernEntry(modal_inner, placeholder="My server").pack(fill="x", pady=(0, 20), ipady=10)
+        tk.Label(modal_inner, text="Name", bg=self.colors['card'], fg=self.colors['muted'],
+                font=("Manrope", 10)).pack(anchor="w")
+        ModernEntry(modal_inner, placeholder="Name").pack(fill="x", pady=(0, 15), ipady=8)
         
         # IP input
-        tk.Label(modal_inner, text="IP / CFX endpoint", bg=self.colors['card'], fg=self.colors['muted'],
-                font=("Manrope", 10, "bold")).pack(anchor="w")
-        ModernEntry(modal_inner, placeholder="Ex: cfx.re/join/xxxxxx").pack(fill="x", pady=(0, 30), ipady=10)
+        tk.Label(modal_inner, text="IP / CFX", bg=self.colors['card'], fg=self.colors['muted'],
+                font=("Manrope", 10)).pack(anchor="w")
+        ModernEntry(modal_inner, placeholder="IP").pack(fill="x", pady=(0, 20), ipady=8)
         
         # Add button
-        tk.Button(modal_inner, text="  + Add target", command=self.close_modal,
+        tk.Button(modal_inner, text="Add", command=self.close_modal,
                  bg="#9b72ff", fg="white",
                  relief="flat", cursor="hand2",
-                 font=("Manrope", 11, "bold"), width=20, pady=12).pack(fill="x")
+                 font=("Manrope", 10, "bold"), width=10, pady=8).pack(anchor="e")
         
     def close_modal(self):
         if hasattr(self, 'modal_window') and self.modal_window:
