@@ -9,7 +9,8 @@
       "changelog": "/changelog"
     },
     "check_interval": 86400,
-    "auto_check": true
+    "auto_check": true,
+    "local_api": "http://127.0.0.1:3011"
   },
   "paths": {
     "output": "Output",
@@ -17,7 +18,7 @@
     "unpacked": "Unpacked"
   },
   "ui": {
-    "theme": "gray_green",
+    "theme": "electron_purple_green",
     "language": "fr"
   },
   "features": {

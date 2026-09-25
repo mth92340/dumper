@@ -1,5 +1,5 @@
 ================================================================================
-                           STELLAR FXAP DUMPER V2
+                           ZS DUMPER — CONTROL CENTER
 ================================================================================
 
 VERSION : 2.0
@@ -28,8 +28,8 @@ PRÉREQUIS :
 ✓ Decrypt : Décryptage des fichiers chiffrés
 ✓ Fixer : Réparation des fichiers corrompus
 ✓ Détection automatique : Récupération IP et token depuis FiveM
-✓ Interface moderne : Design avec texture et cartes stylisées
-✓ Cartes élégantes : Bordures vertes, avatars avec gradient
+✓ Interface Electron : Design moderne inspiré de l'app Electron
+✓ Palette violet/vert : Couleurs professionnelles et modernes
 ✓ Mise à jour API : Système de mise à jour automatique
 ✓ Installation complète : Assistant d'installation intégré
 ✓ Pas de CMD : Lancement en mode fenêtré sans console
@@ -38,42 +38,45 @@ PRÉREQUIS :
                                 DESIGN
 ================================================================================
 
-INTERFACE MODERNE AVEC TEXTURE :
-- Palette de couleurs gris/vert professionnelle
-- Cartes avec bordures vertes (#00b894)
-- Avatars avec effet gradient simulé
-- Token badges avec design moderne
-- Boutons avec effets de survol
-- Typographie Helvetica propre
-- Espacement optimal et texture visuelle
+INTERFACE STYLE ELECTRON :
+- Palette très sombre (#08080b) - Fond ultra noir
+- Sidebar professionnelle (#0b0b0f) avec navigation
+- Violet principal (#9b72ff) - Accents et branding
+- Vert accent (#57e39b) - Success et highlights
+- Lignes subtilles (#292934) - Séparateurs
+- Typographie Manrope moderne et professionnelle
+- Cartes stylisées avec effets visuels
+- Avatars circulaires avec branding
+- Status chips pour l'état des cibles
 
 PALETTE DE COULEURS :
-- Gris foncé (#1e272e) - Fond principal
-- Gris moyen (#3d4852) - Cartes
-- Gris clair (#4b5563) - Éléments
-- Vert (#00b894) - Accents principaux
-- Vert clair (#00cec9) - Survol
-- Blanc (#ffffff) - Texte principal
+- Noir ultra (#08080b) - Fond principal
+- Noir sidebar (#0b0b0f) - Sidebar
+- Gris foncé (#101015) - Cartes
+- Violet (#9b72ff) - Accents principaux
+- Vert (#57e39b) - Success et highlights
+- Blanc (#f5f5f7) - Texte principal
 
 ================================================================================
                                 UTILISATION
 ================================================================================
 
 DUMPER :
-1. Entrez le nom du serveur et l'IP / lien cfx.re
-2. Cliquez sur "Ajouter" pour ajouter la cible
-3. Utilisez "Détection Auto" pour récupérer depuis FiveM
+1. Cliquez sur "Add target" pour ajouter une nouvelle cible
+2. Entrez le nom du serveur et l'IP / lien cfx.re
+3. Utilisez la détection automatique pour FiveM
 4. Cliquez sur "Dump" pour lancer la récupération
 
-DÉTECTION AUTO :
-- Ouvrez FiveM et connectez-vous à un serveur
-- Cliquez sur "Détection Auto" dans ZSDumper
-- L'IP et le token seront récupérés automatiquement
+OVERVIEW :
+- Section héros avec informations sur l'API
+- Statistiques en temps réel
+- Gestion des cibles avec cartes modernes
+- Recherche et filtrage des serveurs
 
 MISE À JOUR :
-- Cliquez sur le bouton "Mise à jour" dans la sidebar
-- L'application vérifiera les mises à jour disponibles
-- Téléchargement et installation automatique
+- Connecté à l'API locale (port 3011)
+- Vérification automatique des mises à jour
+- Gestion des versions via GitHub
 
 ================================================================================
                             CONFIGURATION
@@ -101,6 +104,8 @@ Endpoints :
 - GET /download  : Télécharger la mise à jour
 - GET /changelog : Notes de version
 
+API locale : http://127.0.0.1:3011
+
 La configuration de l'API peut être modifiée dans zsdumper_config.json
 
 ================================================================================
@@ -113,7 +118,7 @@ SOLUTION : L'exécutable est configuré en mode sans console (console=False).
 
 PROBLÈME : Token non détecté
 SOLUTION : Assurez-vous que FiveM est en cours d'exécution et connecté à un
-           serveur. Essayez la "Détection Auto".
+           serveur. Essayez la détection automatique.
 
 PROBLÈME : Erreur lors du dump
 SOLUTION : Vérifiez que l'IP du serveur est correcte et accessible.
@@ -130,7 +135,7 @@ SOLUTION : Vérifiez votre connexion internet. L'API doit être accessible.
 Empaquetage : PyInstaller avec mode fenêtré (no-console)
 Dependencies : psutil, requests, pycryptodome, tkinter
 Python : Non requis pour l'utilisateur (inclus dans l'exécutable)
-Design : Interface moderne avec texture et cartes stylisées
+Design : Interface style Electron avec palette violet/vert moderne
 
 ================================================================================
                                 SUPPORT
@@ -144,7 +149,7 @@ Pour le support technique ou les questions :
                                 LICENCE
 ================================================================================
 
-Stellar FXAP Dumper V2 - Professional Edition
+ZS Dumper — Control Center
 Usage personnel et éducatif uniquement.
 Respectez les conditions d'utilisation des serveurs FiveM.
 

@@ -1,0 +1,24 @@
+appId: fr.zs.dumper
+productName: ZS-DUMPER
+copyright: Copyright © 2026 ZS-DUMPER
+asar: true
+files:
+  - .next/**
+  - app/**
+  - public/**
+  - node_modules/**
+  - package.json
+  - electron/**
+  - .env.local
+win:
+  target:
+    - nsis
+    - portable
+  artifactName: ZS-DUMPER-${version}-${arch}.${ext}
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+portable:
+  artifactName: ZS-DUMPER-${version}-portable.${ext}
