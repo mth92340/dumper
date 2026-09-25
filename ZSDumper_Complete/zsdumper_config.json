@@ -1,0 +1,28 @@
+{
+  "version": "2.0",
+  "edition": "Professional",
+  "api": {
+    "url": "https://api-zsdump.zinz1-dev.fr",
+    "endpoints": {
+      "version": "/version",
+      "download": "/download",
+      "changelog": "/changelog"
+    },
+    "check_interval": 86400,
+    "auto_check": true
+  },
+  "paths": {
+    "output": "Output",
+    "temp": "Temp",
+    "unpacked": "Unpacked"
+  },
+  "ui": {
+    "theme": "gray_green",
+    "language": "fr"
+  },
+  "features": {
+    "auto_detect": true,
+    "auto_cleanup": true,
+    "show_notifications": true
+  }
+}
