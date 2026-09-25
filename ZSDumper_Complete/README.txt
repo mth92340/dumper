@@ -114,7 +114,7 @@ La configuration de l'API peut être modifiée dans zsdumper_config.json
 
 PROBLÈME : Fenêtre CMD qui s'ouvre
 SOLUTION : L'exécutable est configuré en mode sans console (console=False).
-           Utilisez ZSDumper.exe directement, pas ZSDumper.bat
+           Utilisez ZSDumper.exe directement.
 
 PROBLÈME : Token non détecté
 SOLUTION : Assurez-vous que FiveM est en cours d'exécution et connecté à un
