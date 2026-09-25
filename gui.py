@@ -197,7 +197,7 @@ class ZSDumperApp(tk.Tk):
         
 
         
-        for text, command in nav_items:
+        for text, icon, command in nav_items:
             active = (text == "Dumper")
             bg = "#1b1725" if active else "transparent"
             fg = self.colors['text'] if active else "#8d8d9c"
