@@ -803,8 +803,8 @@ class ZSDumperApp(tk.Tk):
         progress_card.pack(fill="both", expand=True, padx=25, pady=25)
         
         tk.Label(progress_card, text=f"Dump en cours : {target_name}",
-                bg=self.colors['card'], fg=self.colors['white'],
-                font=("Helvetica", 16, "bold")).pack(pady=45)
+                bg=self.colors['card'], fg=self.colors['text'],
+                font=("Manrope", 16, "bold")).pack(pady=45)
         
         progress = ttk.Progressbar(progress_card, length=380, mode='indeterminate')
         progress.pack(pady=25)
@@ -881,31 +881,31 @@ class ZSDumperApp(tk.Tk):
         install_card.pack(fill="both", expand=True, padx=30, pady=30)
         
         # Logo
-        logo_bg = tk.Frame(install_card, bg=self.colors['indigo'], 
+        logo_bg = tk.Frame(install_card, bg=self.colors['purple'], 
                           width=95, height=95)
         logo_bg.pack(pady=(35, 25))
         logo_bg.pack_propagate(False)
         
         logo_canvas = tk.Canvas(logo_bg, width=85, height=85, 
-                               bg=self.colors['indigo'], highlightthickness=0)
+                               bg=self.colors['purple'], highlightthickness=0)
         logo_canvas.pack(pady=5)
-        self.draw_beautiful_logo(logo_canvas, 42, 42, 38)
+        self.draw_electron_logo(logo_canvas, 42, 42, 38)
         
         tk.Label(install_card, text="ZS DUMPER",
-                bg=self.colors['card'], fg=self.colors['white'],
-                font=("Helvetica", 28, "bold")).pack(pady=(0, 12))
+                bg=self.colors['card'], fg=self.colors['text'],
+                font=("Manrope", 28, "bold")).pack(pady=(0, 12))
         
         tk.Label(install_card, text="PROFESSIONAL",
-                bg=self.colors['card'], fg=self.colors['indigo_light'],
-                font=("Helvetica", 12, "bold")).pack(pady=(0, 35))
+                bg=self.colors['card'], fg=self.colors['purple_light'],
+                font=("Manrope", 12, "bold")).pack(pady=(0, 35))
         
         tk.Label(install_card, text="Assistant d'installation",
-                bg=self.colors['card'], fg=self.colors['text_muted'],
-                font=("Helvetica", 14)).pack(pady=(0, 30))
+                bg=self.colors['card'], fg=self.colors['muted'],
+                font=("Manrope", 14)).pack(pady=(0, 30))
         
         # Log section
         log_frame = tk.Frame(install_card, bg=self.colors['sidebar'], 
-                           highlightbackground=self.colors['indigo'],
+                           highlightbackground=self.colors['purple'],
                            highlightthickness=2)
         log_frame.pack(fill="both", expand=True, padx=30, pady=12)
         
@@ -959,7 +959,7 @@ class ZSDumperApp(tk.Tk):
                 messagebox.showerror("Erreur", f"Erreur lors de l'installation : {str(e)}")
         
         StylishButton(install_card, "Installer", run_installation,
-                     bg=self.colors['indigo'], hover_bg=self.colors['indigo_light'],
+                     bg=self.colors['purple'], hover_bg=self.colors['purple_light'],
                      width=28).pack(pady=30)
         
     def check_java(self):
@@ -1024,8 +1024,8 @@ class ZSDumperApp(tk.Tk):
         progress_card.pack(fill="both", expand=True, padx=25, pady=25)
         
         tk.Label(progress_card, text=f"Téléchargement v{latest_version}...",
-                bg=self.colors['card'], fg=self.colors['white'],
-                font=("Helvetica", 15, "bold")).pack(pady=45)
+                bg=self.colors['card'], fg=self.colors['text'],
+                font=("Manrope", 15, "bold")).pack(pady=45)
         
         progress = ttk.Progressbar(progress_card, length=380, mode='determinate')
         progress.pack(pady=25)
